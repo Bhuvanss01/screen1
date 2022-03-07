@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -33,79 +35,77 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30.0),
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Login to your Account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                decoration: TextDecoration.none),
-                          ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Login to your Account",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              decoration: TextDecoration.none),
                         ),
-                        SizedBox(
-                          height: 30,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      TextField(
+                        controller: email,
+                        decoration: InputDecoration(hintText: "Email"),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      TextField(
+                        controller: pass,
+                        autofocus: true,
+                        // ignore: prefer_const_constructors
+                        decoration: InputDecoration(
+                          hintText: "Password",
                         ),
-                        TextField(
-                          controller: email,
-                          decoration: InputDecoration(hintText: "Email"),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      TextField(
+                        controller: Conpass,
+                        autofocus: true,
+                        // ignore: prefer_const_constructors
+                        decoration: InputDecoration(
+                          hintText: "Confirm Password",
                         ),
-                        SizedBox(
-                          height: 30,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        child: RaisedButton(
+                          elevation: 4,
+                          onPressed: () {},
+                          child: Text("Sign in"),
+                          color: Colors.blueAccent,
+                          textColor: Colors.white,
                         ),
-                        TextField(
-                          controller: pass,
-                          autofocus: true,
-                          // ignore: prefer_const_constructors
-                          decoration: InputDecoration(
-                            hintText: "Password",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          controller: Conpass,
-                          autofocus: true,
-                          // ignore: prefer_const_constructors
-                          decoration: InputDecoration(
-                            hintText: "Confirm Password",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
-                          child: RaisedButton(
-                            elevation: 4,
-                            onPressed: () {},
-                            child: Text("Sign in"),
-                            color: Colors.blueAccent,
-                            textColor: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text("Or Sign in with"),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SocialIcon(Image.asset("Icons/google.png")),
-                              SocialIcon(Image.asset("Icons/google.png")),
-                              SocialIcon(Image.asset("Icons/google.png")),
-                            ]),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text("Or Sign in with"),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SocialIcon(Image.asset("Icons/google.png")),
+                            SocialIcon(Image.asset("Icons/fb.png")),
+                            SocialIcon(Image.asset("Icons/twitter.png")),
+                          ]),
+                    ],
                   ),
                 ),
               ],

@@ -34,80 +34,80 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30.0),
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Login to your Account",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                decoration: TextDecoration.none),
-                          ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Login to your Account",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              decoration: TextDecoration.none),
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          controller: email,
-                          decoration: InputDecoration(hintText: "Email"),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          obscureText: true,
-                          controller: password,
-                          autofocus: true,
-                          decoration: InputDecoration(
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      TextField(
+                        autofocus: true,
+                        controller: email,
+                        decoration: InputDecoration(hintText: "Email"),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      TextField(
+                        obscureText: true,
+                        controller: password,
+                        autofocus: true,
+                        decoration: InputDecoration(
 
-                            hintText: "password",
-                          ),
+                          hintText: "password",
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
-                          child: RaisedButton(
-                            elevation: 4,
-                            onPressed: () {
-                              Provider.of<Userinfo>(context,listen: false).Fetch(email.text.toString(), password.text.toString());
-                              Navigator.pushNamed(context, "/home");
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        child: RaisedButton(
+                          elevation: 4,
+                          onPressed: () {
+                            Provider.of<Userinfo>(context,listen: false).Fetch(email.text.toString(), password.text.toString());
+                            Navigator.pushNamed(context, "/home");
 
-                            },
-                            child: Text("Sign in"),
-                            color: Colors.blueAccent,
-                            textColor: Colors.white,
-                          ),
+                          },
+                          child: Text("Sign in"),
+                          color: Colors.blueAccent,
+                          textColor: Colors.white,
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text("Or Sign in with"),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SocialIcon(Image.asset("Icons/google.png")),
-                              SocialIcon(Image.asset("Icons/google.png")),
-                              SocialIcon(Image.asset("Icons/google.png")),
-                            ]),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text("Or Sign in with"),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("Dont't Have Account?"),
-                            TextButton(onPressed: () {}, child: Text("sign up"))
-                          ],
-                        )
-                      ],
-                    ),
+
+                            Image.asset("Icons/google.png"),
+                            Image.asset("Icons/fb.png"),
+                           Image.asset("Icons/twitter.png"),
+                          ]),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Dont't Have Account?"),
+                          TextButton(onPressed: () {}, child: Text("sign up"))
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ],
@@ -119,25 +119,25 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class SocialIcon extends StatelessWidget {
-  final Image src;
-
-  SocialIcon(@required this.src);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: Colors.blue,
-        ),
-      ),
-      child: src,
-      height: 30,
-      width: 30,
-    );
-  }
-}
+// class SocialIcon extends StatelessWidget {
+//   final  src;
+//
+//   SocialIcon(@required this.src);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: EdgeInsets.symmetric(horizontal: 10),
+//       padding: EdgeInsets.all(20),
+//       decoration: BoxDecoration(
+//         border: Border.all(
+//           width: 3,
+//           color: Colors.blue,
+//         ),
+//       ),
+//       child: Image.asset(src),
+//       height: 30,
+//       width: 30,
+//     );
+//   }
+// }

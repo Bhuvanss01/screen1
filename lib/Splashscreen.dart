@@ -1,8 +1,21 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Timer(Duration(seconds: 2), ()=>Navigator.pushNamed(context, "/login"),);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +30,10 @@ class SplashScreen extends StatelessWidget {
                   TextStyle(color: Colors.white, decoration: TextDecoration.none),
             ),
           ),
-          //RaisedButton(onPressed: (){Navigator.pushNamed(context, "/login");},child: Text("Login"),)
+         // RaisedButton(onPressed: (){Navigator.pushNamed(context, "/login");},child: Text("Login"),)
         ],
       ),
-      
+
     );
   }
 }
