@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Dont't Have Account?"),
-                          TextButton(onPressed: () {}, child: Text("sign up"))
+                          TextButton(onPressed: () {Navigator.pushNamed(context, "/signup");}, child: Text("sign up"))
                         ],
                       )
                     ],

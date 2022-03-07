@@ -14,6 +14,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(foregroundColor: Colors.black,backgroundColor: Colors.white,elevation: 0,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -52,6 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: 30,
                       ),
                       TextField(
+                        autofocus: true,
                         controller: email,
                         decoration: InputDecoration(hintText: "Email"),
                       ),
@@ -101,9 +103,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SocialIcon(Image.asset("Icons/google.png")),
-                            SocialIcon(Image.asset("Icons/fb.png")),
-                            SocialIcon(Image.asset("Icons/twitter.png")),
+                            Image.asset("Icons/google.png"),
+                            Image.asset("Icons/fb.png"),
+                            Image.asset("Icons/twitter.png"),
                           ]),
                     ],
                   ),
@@ -117,25 +119,3 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 }
 
-class SocialIcon extends StatelessWidget {
-  final Image src;
-
-  SocialIcon(@required this.src);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: Colors.blue,
-        ),
-      ),
-      child: src,
-      height: 30,
-      width: 30,
-    );
-  }
-}
