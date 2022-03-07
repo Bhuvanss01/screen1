@@ -10,10 +10,13 @@ class HomePage extends StatelessWidget {
     return Consumer<Userinfo>(builder: (context,Userinfo,_) {
       return MaterialApp(
         home: Scaffold(
-          body: Column(
-            children: [
-              Text(Userinfo.email),
-            ],
+          body: SafeArea(
+            child: Column(
+              children: [
+                Text(Userinfo.email,style: TextStyle(fontSize: 40),),
+                Text(Userinfo.password,style: TextStyle(fontSize: 40),),
+              ],
+            ),
           ),
         ),
       );
