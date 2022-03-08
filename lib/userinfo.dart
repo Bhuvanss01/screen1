@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
+import 'login.dart';
 
-class Userinfo with ChangeNotifier
-{
-  String email="";
-  String password="";
+class Userinfo with ChangeNotifier {
+  String email1 = "";
+  String password1 = "";
 
-
-
-   Fetch(String emailid , String pwd){
-     email = emailid;
-     password = pwd;
-     notifyListeners();
-
+  Fetch(String emailid, String pwd) {
+    email1 = emailid;
+    password1 = pwd;
+    notifyListeners();
   }
+
 }

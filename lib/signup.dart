@@ -1,27 +1,32 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:screen1/validator.dart';
 
-class SignupScreen extends StatefulWidget {
-  @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
+import 'Signupval.dart';
 
-class _SignupScreenState extends State<SignupScreen> {
+class SignupScreen extends StatelessWidget {
+  SignupScreen({Key? key}) : super(key: key);
   final email = TextEditingController();
   final pass = TextEditingController();
   final Conpass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final validation = Provider.of<SignupValid>(context);
+
     return Scaffold(
-      appBar: AppBar(foregroundColor: Colors.black,backgroundColor: Colors.white,elevation: 0,),
+      appBar: AppBar(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SafeArea(
             child: Column(
               children: [
-                Align(
+                const Align(
                   alignment: Alignment.topCenter,
                   child: Text(
                     "Logo",
@@ -31,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Padding(
@@ -39,7 +44,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
                           "Login to your Account",
@@ -49,55 +54,68 @@ class _SignupScreenState extends State<SignupScreen> {
                               decoration: TextDecoration.none),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextField(
+                        onChanged: (value) {
+                          validation.email1(value);
+                        },
                         autofocus: true,
                         controller: email,
-                        decoration: InputDecoration(hintText: "Email"),
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          errorText: validation.email.error
+                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextField(
+                        onChanged: (value) {
+                          validation.password1(value);
+                        },
                         controller: pass,
                         autofocus: true,
                         // ignore: prefer_const_constructors
                         decoration: InputDecoration(
-                          hintText: "Password",
-                        ),
+                            hintText: "Password",
+                            errorText: validation.password.error),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextField(
+                        onChanged: (value) {
+                          validation.conpassword1(value);
+                        },
                         controller: Conpass,
                         autofocus: true,
                         // ignore: prefer_const_constructors
                         decoration: InputDecoration(
-                          hintText: "Confirm Password",
-                        ),
+                            hintText: "Confirm Password",
+                            errorText: validation.conpass.error),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Container(
+                      SizedBox(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
+
                         child: RaisedButton(
                           elevation: 4,
                           onPressed: () {},
-                          child: Text("Sign in"),
+                          child: const Text("Sign in"),
                           color: Colors.blueAccent,
                           textColor: Colors.white,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Text("Or Sign in with"),
-                      SizedBox(
+                      const Text("Or Sign in with"),
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -118,4 +136,3 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 }
-

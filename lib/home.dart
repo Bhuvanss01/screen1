@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
           body: SafeArea(
             child: Column(
               children: [
-                Text(Userinfo.email,style: TextStyle(fontSize: 40),),
-                Text(Userinfo.password,style: TextStyle(fontSize: 40),),
+                //Text(Userinfo.email1,style: TextStyle(fontSize: 40),),
+                //Text(Userinfo.password1,style: TextStyle(fontSize: 40),),
               ],
             ),
           ),

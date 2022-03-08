@@ -1,25 +1,33 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use
-
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 import 'package:screen1/userinfo.dart';
 
-// ignore: use_key_in_widget_constructors
+import 'loginvalid.dart';
+
+
+
+
 class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
+  final email = TextEditingController();
+
+  final password = TextEditingController();
+
+
+
   @override
   Widget build(BuildContext context) {
-    final email = TextEditingController();
-    final password = TextEditingController();
-    return Scaffold(
+    final validation1 = Provider.of<LoginValid>(context);
+    return  Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SafeArea(
             child: Column(
               children: [
-                Align(
+                const Align(
                   alignment: Alignment.topCenter,
                   child: Text(
                     "Logo",
@@ -29,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Padding(
@@ -37,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
                           "Login to your Account",
@@ -47,64 +55,77 @@ class LoginScreen extends StatelessWidget {
                               decoration: TextDecoration.none),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextField(
+                        onChanged: (value){
+                          validation1.email2(value);
+
+
+                        },
                         autofocus: true,
                         controller: email,
-                        decoration: InputDecoration(hintText: "Email"),
+
+                        decoration: InputDecoration(hintText: "Email",errorText: validation1.email.error),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextField(
+                        onChanged: (value){
+                          validation1.password2(value);
+
+
+                        },
                         obscureText: true,
                         controller: password,
                         autofocus: true,
                         decoration: InputDecoration(
 
                           hintText: "password",
+                          errorText: validation1.password.error
                         ),
                       ),
                       SizedBox(
-                        height: 30,
-                      ),
-                      Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         child: RaisedButton(
                           elevation: 4,
                           onPressed: () {
-                            Provider.of<Userinfo>(context,listen: false).Fetch(email.text.toString(), password.text.toString());
+                            Provider.of<Userinfo>(context, listen: false).Fetch(
+                                email.text.toString(),
+                                password.text.toString());
                             Navigator.pushNamed(context, "/home");
-
                           },
-                          child: Text("Sign in"),
+                          child: const Text("Sign in"),
                           color: Colors.blueAccent,
                           textColor: Colors.white,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Text("Or Sign in with"),
-                      SizedBox(
+                      const Text("Or Sign in with"),
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-
                             Image.asset("Icons/google.png"),
                             Image.asset("Icons/fb.png"),
-                           Image.asset("Icons/twitter.png"),
+                            Image.asset("Icons/twitter.png"),
                           ]),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Dont't Have Account?"),
-                          TextButton(onPressed: () {Navigator.pushNamed(context, "/signup");}, child: Text("sign up"))
+                          const Text("Don't Have Account?"),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/signup");
+                              },
+                              child: const Text("sign up"))
                         ],
                       )
                     ],
@@ -119,25 +140,3 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-// class SocialIcon extends StatelessWidget {
-//   final  src;
-//
-//   SocialIcon(@required this.src);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: EdgeInsets.symmetric(horizontal: 10),
-//       padding: EdgeInsets.all(20),
-//       decoration: BoxDecoration(
-//         border: Border.all(
-//           width: 3,
-//           color: Colors.blue,
-//         ),
-//       ),
-//       child: Image.asset(src),
-//       height: 30,
-//       width: 30,
-//     );
-//   }
-// }
