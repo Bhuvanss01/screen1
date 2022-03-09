@@ -7,28 +7,25 @@ class SignupValid with ChangeNotifier {
   Validation _password = Validation("", "");
   Validation _conpassword = Validation("", "");
 
-
   Validation get email => _email;
 
   Validation get password => _password;
 
   Validation get conpass => _conpassword;
 
-
   void email1(String value) {
-    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-
-      _email = Validation("", "Please Enter Correct Mail Format");
-    }
-    else {
+    Pattern pattern = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    if (value.contains(pattern)) {
       _email = Validation(value, "");
-
-
+      print("errorgone");
+    } else {
+      _email = Validation("", "Please Enter Correct Mail Format");
+      print("error");
     }
-
-
-
+    notifyListeners();
   }
+
   void password1(String value) {
     if (value.length >= 3) {
       _password = Validation(value, "");
@@ -37,15 +34,14 @@ class SignupValid with ChangeNotifier {
     }
     notifyListeners();
   }
+
   void conpassword1(String value) {
-    if (value!=_password.value) {
-
+    if (_password.value == value) {
+      _conpassword = Validation(value, "");
+    } else {
       _conpassword = Validation("", "Mismatch");
-
     }
-    else {
-
-       _conpassword = Validation(value, "");
-    }
+    notifyListeners();
   }
+
 }

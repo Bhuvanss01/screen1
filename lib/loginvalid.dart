@@ -13,13 +13,16 @@ class LoginValid with ChangeNotifier {
 
 
   void email2(String value) {
-    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
-      Validation("", "Please Enter Correct Mail Format");
+    Pattern pattern = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    if (value.contains(pattern)) {
+      _email = Validation(value, "");
+      print("errorgone");
+    } else {
+      _email = Validation("", "Please Enter Correct Mail Format");
+      print("error");
     }
-    else
-      Validation(value, "");
-
-
+    notifyListeners();
   }
   void password2(String value) {
     if (value.length >= 3) {
@@ -29,6 +32,7 @@ class LoginValid with ChangeNotifier {
     }
     notifyListeners();
   }
+
 
 
 }
